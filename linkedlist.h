@@ -19,17 +19,17 @@ class LinkedList{
     public:
         LinkedList();
         ~LinkedList();
-
-        bool addNode(int, string*);
-        bool deleteNode(int);
-        bool getNode(int, Data*);
+        //methods will be used inside Graph methods
+        bool addEdge(int, int);
+        bool deleteEdge(int);
+        bool getEdge(int, Data*);
         void printList(bool = false);
         int getCount();
         void clearList();
         bool exists(int);
     private:
-        Edge *head;
-        Edge *createEdge(int, string*);
+        Node *head;
+        Node *createEdge(int, int);
 };
 
 #endif

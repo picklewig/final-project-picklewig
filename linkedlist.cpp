@@ -13,44 +13,31 @@ LinkedList::~LinkedList(){
     clearList();
 }
 
-Node* LinkedList::createNode(int id, string* information){
+Node* LinkedList::createEdge(int id, int weight){
     Node *newNode = new Node;
     newNode->data.id = id;
-    newNode->data.data = *information;
+    newNode->data.weight = weight;
     newNode->next = NULL;
     newNode->prev = NULL;
     return newNode;
 }
 
-bool LinkedList::addNode(int id, string* information){
+bool LinkedList::addEdge(int id, int weight){
     bool added = false;
-    if(id > 0 and *information != ""){
+    if(id > 0 and weight > 0){
         Node *current = head; //head initially is NULL
         if(head == NULL){
-            head = createNode(id, information);
+            head = createEdge(id, weight);
             added = true;
         }
-        else{//head first, then tail, else body
-            while(id > current->data.id and current->next != NULL){
+        else{
+            while(current->next != NULL){
                 current = current->next;
             }
-            if(id < current->data.id and current->prev != NULL){ //adds node in list body
-                Node *insertNode = createNode(id, information);
-                insertNode->next = current;
-                insertNode->prev = current->prev;
-                current->prev->next = insertNode;
-                current->prev = insertNode;
-                added = true;
-            } else if (id < current->data.id and current->prev == NULL) { //adds new head node
-                Node *insertNode = createNode(id, information);
-                current->prev = insertNode;
-                insertNode->next = current;
-                head = insertNode;
-                added = true;
-            } else if (id > current->data.id and current->next == NULL) { //adds new tail node
-                Node *insertNode = createNode(id, information);
-                insertNode->prev = current;
-                current->next = insertNode;
+            else if (current->next == NULL) { //adds new tail node
+                Node *insertEdge = createEdge(id, weight);
+                insertEdge->prev = current;
+                current->next = insertEdge;
                 added = true;
             }
         }
@@ -58,7 +45,7 @@ bool LinkedList::addNode(int id, string* information){
     return added;
 }
 
-bool LinkedList::deleteNode(int id){
+bool LinkedList::deleteEdge(int id){
     bool deleted = false;
     Node *current = head;
     while(current and id != current->data.id){
@@ -83,7 +70,7 @@ bool LinkedList::deleteNode(int id){
     return deleted;
 }
 
-bool LinkedList::getNode(int id, Data* emptyStruct){
+bool LinkedList::getEdge(int id, Data* emptyStruct){
     bool gotten = false;
     Node *current = head;
 
@@ -92,7 +79,7 @@ bool LinkedList::getNode(int id, Data* emptyStruct){
     }
     if(id == current->data.id){
         emptyStruct->id = current->data.id;
-        emptyStruct->data = current->data.data;
+        emptyStruct->data = current->data.weight;
         gotten = true;
     }
     return gotten;

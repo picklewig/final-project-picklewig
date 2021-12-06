@@ -18,8 +18,15 @@ class Graph{
     public:
         Graph();
         ~Graph();
+
+        addNode();//will append to graph vector
+        removeNode();
+        addEdge();
+        removeEdge();
+        isEmpty();
+        printGraph();
     private:
-        vector<>
+        vector<LinkedList> graph;
 };
 
 #endif //L8_SHEPHERD_GRAPH_H
