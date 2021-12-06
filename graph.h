@@ -19,14 +19,16 @@ class Graph{
         Graph();
         ~Graph();
 
-        addNode();//will append to graph vector
-        removeNode();
-        addEdge();
-        removeEdge();
-        isEmpty();
-        printGraph();
+        bool addNode(int);//will append linked list with head node established to graph, will only require id
+        bool removeNode(int);
+        bool addEdge(int, int, int);
+        bool removeEdge(int, int, int);
+        bool isEmpty();
+        void printGraph();
     private:
-        vector<LinkedList> graph;
+        vector<LinkedList> *graph;
+        int vertices;
+        int edges;
 };
 
 #endif //L8_SHEPHERD_GRAPH_H

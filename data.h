@@ -9,7 +9,7 @@
 using std::string;
 
 struct Data {
-    int id;
+    int id; //name identifier
     int weight; //used to be string data
 };
 
