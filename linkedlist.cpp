@@ -81,7 +81,7 @@ bool LinkedList::getEdge(int id, Data* emptyStruct){
     }
     if(id == current->data.id){
         emptyStruct->id = current->data.id;
-        emptyStruct->data = current->data.weight;
+        emptyStruct->weight = current->data.weight;
         gotten = true;
     }
     return gotten;

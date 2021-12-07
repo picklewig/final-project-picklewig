@@ -27,7 +27,7 @@ class Graph{
         bool isEmpty();
         void printGraph();
     private:
-        vector<LinkedList> *graph;
+        vector<LinkedList*> graph;
         int vertices;//count variables
         int edges;
 };
