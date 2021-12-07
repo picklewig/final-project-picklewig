@@ -27,6 +27,7 @@ class LinkedList{
         int getCount();
         void clearList();
         bool exists(int);
+        Node* getHead();
     private:
         Node *head;
         Node *createEdge(int, int);

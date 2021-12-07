@@ -13,6 +13,10 @@ LinkedList::~LinkedList(){
     clearList();
 }
 
+Node* LinkedList::getHead(){
+    return head;
+}
+
 Node* LinkedList::createEdge(int id, int weight){
     Node *newNode = new Node;
     newNode->data.id = id;
@@ -24,22 +28,20 @@ Node* LinkedList::createEdge(int id, int weight){
 
 bool LinkedList::addEdge(int id, int weight){
     bool added = false;
-    if(id > 0 and weight > 0){
+    if(head == NULL){
+        head = createEdge(id, weight);
+        added = true;
+    }
+    else if(id > 0 and weight > 0){
         Node *current = head; //head initially is NULL
-        if(head == NULL){
-            head = createEdge(id, weight);
-            added = true;
+        while(current->next != NULL){
+            current = current->next;
         }
-        else{
-            while(current->next != NULL){
-                current = current->next;
-            }
-            else if (current->next == NULL) { //adds new tail node
-                Node *insertEdge = createEdge(id, weight);
-                insertEdge->prev = current;
-                current->next = insertEdge;
-                added = true;
-            }
+        if(current->next == NULL){ //adds new tail node
+            Node *insertEdge = createEdge(id, weight);
+            insertEdge->prev = current;
+            current->next = insertEdge;
+            added = true;
         }
     }
     return added;
