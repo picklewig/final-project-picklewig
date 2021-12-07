@@ -29,12 +29,14 @@ bool Graph::addVertex(int id){
 
 bool Graph::removeVertex(int id){
     bool deleted = false;
+    int index = 0;
     for(LinkedList* list : graph){
         if(list->getHead()->data.id == id){
-            graph.erase(list);
+            graph.erase(graph.begin()+index);
             deleted = true;
             vertices--;
         }
+        index++;
     }
     return deleted;
 }
