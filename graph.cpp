@@ -4,6 +4,11 @@
 
 #include "graph.h"
 
+Graph::Graph(){
+    vertices = 0;
+    edges = 0;
+}
+
 bool Graph::addVertex(int id){
     bool added = false;
     bool duplicate = false;
@@ -17,12 +22,21 @@ bool Graph::addVertex(int id){
     if(!duplicate){
         graph.push_back(newList);
         added = true;
+        vertices++;
     }
     return added;
 }
 
 bool Graph::removeVertex(int id){
-
+    bool deleted = false;
+    for(LinkedList* list : graph){
+        if(list->getHead()->data.id == id){
+            graph.erase(list);
+            deleted = true;
+            vertices--;
+        }
+    }
+    return deleted;
 }
 
 bool Graph::addEdge(int id, int destination, int weight){
