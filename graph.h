@@ -19,8 +19,8 @@ class Graph{
         Graph();
         ~Graph();
 
-        bool addNode(int);//will append linked list with head node established to graph, will only require id
-        bool removeNode(int);
+        bool addVertex(int);//will append linked list with head node established to graph, will only require id
+        bool removeVertex(int);
         bool addEdge(int, int, int);
         bool removeEdge(int, int, int);
         bool isEmpty();
