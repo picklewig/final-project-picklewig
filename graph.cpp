@@ -14,10 +14,8 @@ bool Graph::addVertex(int id){
     bool duplicate = false;
     LinkedList* newList = new LinkedList;
     newList->addEdge(id, -1);//head of linked list represents node in graph, the following list items are edges
-    for(LinkedList* list : graph){//redo this
-        if(list->getHead()->data.id == id){
-            duplicate = true;
-        }
+    if(vertexExists(id)){
+        duplicate = true;
     }
     if(!duplicate){
         graph.push_back(newList);
@@ -28,34 +26,39 @@ bool Graph::addVertex(int id){
 }
 
 bool Graph::removeVertex(int id){
-    bool deleted = false;
+    bool removed = false;
     int index = 0;
-    for(LinkedList* list : graph){ //redo this
+    for(LinkedList* list : graph){ //deleting vertex requires removing from vector
         if(list->getHead()->data.id == id){
             graph.erase(graph.begin()+index);
-            deleted = true;
+            removed = true;
             vertices--;
         }
         index++;
     }
     //got to delete possible branches that connect to removed vertex
-    return deleted;
+    return removed;
 }
 
 bool Graph::addEdge(int id, int destination, int weight){
     bool added = false;
-    for(LinkedList* list : graph){
-        if(list->getHead()->data.id == id){
-            if(list->addEdge(destination, weight)){
-                added = true;
-            }
-        }
+    LinkedList* vertexList = findVertexList(id);
+    if(vertexList and !vertexList->exists(destination)){
+        vertexList->addEdge(destination, weight);
+        added = true;
+        edges++;
     }
     return added;
 }
 
 bool Graph::removeEdge(int id, int destination, int weight){
-
+    bool removed = false;
+    LinkedList* vertexList = findVertexList(id);
+    if(vertexList and vertexList->deleteEdge(destination, weight)){
+        removed = true;
+        edges--;
+    }
+    return removed;
 }
 
 bool Graph::isEmpty(){
@@ -102,4 +105,14 @@ void Graph::clear(){
     }
     vertices = 0;
     edges = 0;
+}
+
+LinkedList *Graph::findVertexList(int id){
+    LinkedList* vertex = NULL;
+    for(LinkedList* list : graph){
+        if(list->getHead()->data.id == id){
+            vertex = list;
+        }
+    }
+    return vertex;
 }

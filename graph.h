@@ -30,6 +30,7 @@ class Graph{
         bool edgeExists(int, int);
         //add traversals bfs and dfs
         void clear();
+        LinkedList* findVertexList(int);
     private:
         vector<LinkedList*> graph;
         int vertices;//count variables
