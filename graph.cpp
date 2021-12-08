@@ -38,6 +38,7 @@ bool Graph::removeVertex(int id){
         }
         index++;
     }
+    //got to delete possible branches that connect to removed vertex
     return deleted;
 }
 
@@ -59,4 +60,27 @@ bool Graph::isEmpty(){
 
 void Graph::printGraph(){
 
+}
+
+bool Graph::vertexExists(int id){
+    bool exists = false;
+    for(LinkedList* list : graph){
+        if(list->getHead()->data.id == id){
+            exists = true;
+        }
+    }
+    return exists;
+}
+
+bool Graph::edgeExists(int id, int weight){
+    bool exists = false;
+    Data* copyData;
+    for(LinkedList* list : graph){
+        if(list->getEdge(id, copyData)){
+            if(copyData->weight == weight){
+                exists = true;
+            }
+        }
+    }
+    return exists;
 }

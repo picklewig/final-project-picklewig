@@ -26,6 +26,10 @@ class Graph{
         bool removeEdge(int, int, int);
         bool isEmpty();
         void printGraph();
+        bool vertexExists(int);
+        bool edgeExists(int, int);
+        //add traversals bfs and dfs
+        void clear();
     private:
         vector<LinkedList*> graph;
         int vertices;//count variables
