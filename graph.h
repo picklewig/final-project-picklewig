@@ -28,13 +28,14 @@ class Graph{
         void printGraph();
         bool vertexExists(int);
         bool edgeExists(int, int);
-        //add traversals bfs and dfs
         void clear();
-        LinkedList* findVertexList(int);
+        void breadthFirstSearch();
+        void depthFirstSearch();
     private:
         vector<LinkedList*> graph;
         int vertices;//count variables
         int edges;
+        LinkedList* findVertexList(int);
 };
 
 #endif //L8_SHEPHERD_GRAPH_H

@@ -9,6 +9,10 @@ Graph::Graph(){
     edges = 0;
 }
 
+Graph::~Graph(){
+    clear();
+}
+
 bool Graph::addVertex(int id){
     bool added = false;
     bool duplicate = false;
@@ -121,4 +125,12 @@ LinkedList *Graph::findVertexList(int id){
         }
     }
     return vertex;
+}
+
+void Graph::breadthFirstSearch(){
+
+}
+
+void Graph::depthFirstSearch(){
+
 }
