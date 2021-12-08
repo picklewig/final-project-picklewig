@@ -14,7 +14,7 @@ bool Graph::addVertex(int id){
     bool duplicate = false;
     LinkedList* newList = new LinkedList;
     newList->addEdge(id, -1);//head of linked list represents node in graph, the following list items are edges
-    for(LinkedList* list : graph){
+    for(LinkedList* list : graph){//redo this
         if(list->getHead()->data.id == id){
             duplicate = true;
         }
@@ -30,7 +30,7 @@ bool Graph::addVertex(int id){
 bool Graph::removeVertex(int id){
     bool deleted = false;
     int index = 0;
-    for(LinkedList* list : graph){
+    for(LinkedList* list : graph){ //redo this
         if(list->getHead()->data.id == id){
             graph.erase(graph.begin()+index);
             deleted = true;
@@ -43,7 +43,15 @@ bool Graph::removeVertex(int id){
 }
 
 bool Graph::addEdge(int id, int destination, int weight){
-
+    bool added = false;
+    for(LinkedList* list : graph){
+        if(list->getHead()->data.id == id){
+            if(list->addEdge(destination, weight)){
+                added = true;
+            }
+        }
+    }
+    return added;
 }
 
 bool Graph::removeEdge(int id, int destination, int weight){
@@ -58,7 +66,7 @@ bool Graph::isEmpty(){
     return empty;
 }
 
-void Graph::printGraph(){
+void Graph::printGraph(){ //will call traversal methods
 
 }
 
@@ -83,4 +91,15 @@ bool Graph::edgeExists(int id, int weight){
         }
     }
     return exists;
+}
+
+void Graph::clear(){
+    int index = 0;
+    for(LinkedList* list : graph){ //redo this
+        delete list;
+        graph.erase(graph.begin()+index);
+        index++;
+    }
+    vertices = 0;
+    edges = 0;
 }
