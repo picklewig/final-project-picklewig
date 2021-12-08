@@ -13,7 +13,7 @@ bool Graph::addVertex(int id){
     bool added = false;
     bool duplicate = false;
     LinkedList* newList = new LinkedList;
-    newList->addEdge(id, -1);//head of linked list represents node in graph, the following list items are edges
+    newList->addEdge(id, -1);//head of linked list represents graph vertex, following list items are edges
     if(vertexExists(id)){
         duplicate = true;
     }
@@ -28,15 +28,21 @@ bool Graph::addVertex(int id){
 bool Graph::removeVertex(int id){
     bool removed = false;
     int index = 0;
+    Data* copyData;
     for(LinkedList* list : graph){ //deleting vertex requires removing from vector
         if(list->getHead()->data.id == id){
             graph.erase(graph.begin()+index);
             removed = true;
             vertices--;
         }
+        if(list->exists(id)){ //removes possible edges going to vertex to be deleted
+            list->getEdge(id, copyData);
+            if(list->deleteEdge(copyData->id, copyData->weight)){
+                edges--;
+            }
+        }
         index++;
     }
-    //got to delete possible branches that connect to removed vertex
     return removed;
 }
 
