@@ -6,6 +6,7 @@
 #define L8_SHEPHERD_GRAPH_H
 
 #include "linkedlist.h"
+#include "stack.h"
 #include <iostream>
 #include "string"
 #include <vector>
@@ -29,8 +30,8 @@ class Graph{
         bool vertexExists(int);
         bool edgeExists(int, int);
         void clear();
-        void breadthFirstSearch();
-        void depthFirstSearch();
+        void breadthFirstSearch(int);
+        void depthFirstSearch(int);
     private:
         vector<LinkedList*> graph;
         int vertices;//count variables

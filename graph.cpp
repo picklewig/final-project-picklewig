@@ -108,7 +108,7 @@ bool Graph::edgeExists(int id, int weight){
 
 void Graph::clear(){
     int index = 0;
-    for(LinkedList* list : graph){ //redo this
+    for(LinkedList* list : graph){
         delete list;
         graph.erase(graph.begin()+index);
         index++;
@@ -127,10 +127,26 @@ LinkedList *Graph::findVertexList(int id){
     return vertex;
 }
 
-void Graph::breadthFirstSearch(){
-
+void Graph::breadthFirstSearch(int id){
+    bool* visited = new bool[vertices];
+    for(int index = 0; index < vertices; index++){
+        visited[index] = false;
+    }
+    Stack* queue;
+    queue->push(id);
+    while(!queue->isEmpty()){
+        cout << queue->getTop() << " ";
+        queue->pop();
+        for(int index = 0; index < vertices; index++){
+            if(!visited[index]){
+                visited[index] = true;
+                queue->push(index);
+            }
+        }
+    }
+    cout << endl;
 }
 
-void Graph::depthFirstSearch(){
+void Graph::depthFirstSearch(int id){
 
 }
