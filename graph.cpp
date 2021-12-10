@@ -135,15 +135,15 @@ void Graph::breadthFirstSearch(int id){
     for(int index = 0; index < vertices; index++){
         visited[index] = false;
     }
-    Stack* queue(vertices);
-    queue->push(id);
-    while(!queue->isEmpty()){
-        cout << queue->getTop() << " ";
-        queue->pop();
+    Stack queue(vertices);
+    queue.push(id);
+    while(!queue.isEmpty()){
+        cout << queue.getTop() << " ";
+        queue.pop();
         for(int index = 0; index < vertices; index++){
             if(!visited[index]){
                 visited[index] = true;
-                queue->push(index);
+                queue.push(index);
             }
         }
     }

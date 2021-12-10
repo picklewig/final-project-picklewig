@@ -27,7 +27,7 @@ public:
 private:
     int size;
     int top; // this is top index
-    Data *stack; // this is stack, it is an array of Data pointers
+    Data **stack; // this is stack, it is an array of Data pointers
 };
 
 #endif //STACK_H
