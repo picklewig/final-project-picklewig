@@ -37,7 +37,7 @@ class Graph{
         int vertices;//count variables
         int edges;
         LinkedList* findVertexList(int);
-        void depthFirstSearch(int, bool*)
+        void depthFirstSearch(int, bool*);
 };
 
 #endif //L8_SHEPHERD_GRAPH_H

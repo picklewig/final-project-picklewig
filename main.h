@@ -12,10 +12,8 @@
 
 #include "graph.h"
 
-#define BUFFERSIZE 8
-#define MAXID 100
-#define BASE 5
-#define OFFSET 20
+#define VERTEXSTART 100
+#define GRAPHSIZE 7
 
 using std::cout;
 using std::endl;

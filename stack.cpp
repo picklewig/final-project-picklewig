@@ -8,15 +8,15 @@
 // each cpp includes ONLY it's header directly!
 #include "stack.h"
 
-Stack::Stack(){
+Stack::Stack(int setSize){
+    stack[setSize];
     top = -1;
 }
 
 // function to insert data into stack
 bool Stack::push(int id){
     bool pushed = false;
-    if(top < STACK_SIZE-1)
-    {
+    if(top < setSize-1){
         stack[++top] = new Data;
         stack[top]->id = id;
         pushed = true;

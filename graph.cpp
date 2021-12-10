@@ -133,7 +133,7 @@ void Graph::breadthFirstSearch(int id){
     for(int index = 0; index < vertices; index++){
         visited[index] = false;
     }
-    Stack* queue;
+    Stack* queue(vertices);
     queue->push(id);
     while(!queue->isEmpty()){
         cout << queue->getTop() << " ";

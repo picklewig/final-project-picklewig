@@ -13,12 +13,11 @@
  */
 
 #include "data.h"
-#define STACK_SIZE 10 // do not modify this define
 
-class Stack {
+class Stack{
 
 public:
-    Stack();
+    Stack(int);
     ~Stack();
     /* 
      * write all your public method prototypes here
@@ -32,8 +31,9 @@ public:
 private:
 
     // these are the only attributes you need. do not modify them or add any
+    int size;
     int top; // this is your top index
-    Data *stack[STACK_SIZE]; // this is your stack, it is an array of Data pointers
+    Data *stack[int]; // this is your stack, it is an array of Data pointers
 };
 
 #endif //STACK_H
