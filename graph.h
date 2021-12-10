@@ -26,7 +26,7 @@ class Graph{
         bool addEdge(int, int, int);
         bool removeEdge(int, int, int);
         bool isEmpty();
-        void printGraph();
+        void printGraph(int);
         bool vertexExists(int);
         bool edgeExists(int, int);
         void clear();
@@ -37,6 +37,7 @@ class Graph{
         int vertices;//count variables
         int edges;
         LinkedList* findVertexList(int);
+        void depthFirstSearch(int, bool*)
 };
 
 #endif //L8_SHEPHERD_GRAPH_H

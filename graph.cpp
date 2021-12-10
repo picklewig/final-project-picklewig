@@ -79,8 +79,9 @@ bool Graph::isEmpty(){
     return empty;
 }
 
-void Graph::printGraph(){ //will call traversal methods
-
+void Graph::printGraph(int id){ //will call traversal methods
+    cout << "Breadth First Search traversal: ";
+    breadthFirstSearch(int id);
 }
 
 bool Graph::vertexExists(int id){
@@ -148,5 +149,20 @@ void Graph::breadthFirstSearch(int id){
 }
 
 void Graph::depthFirstSearch(int id){
+    bool* visited = new bool[vertices];
+    for(int index = 0; index < vertices; index++){
+        visited[index] = false;
+    }
+    depthFirstSearch(id, visited);
+    cout << endl;
+}
 
+void Graph::depthFirstSearch(int node, bool* visited){
+    cout << node << " ";
+    visited[node] = true;
+    for(int index = 0; index < vertices; index++){
+        if(!visited[*index]){
+            depthFirstSearch(*index, visited);
+        }
+    }
 }
