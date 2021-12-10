@@ -12,8 +12,6 @@
 
 #include "graph.h"
 
-#define VERTEXSTART 100
-#define GRAPHSIZE 7
 
 using std::cout;
 using std::endl;

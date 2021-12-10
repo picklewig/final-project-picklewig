@@ -15,25 +15,19 @@
 #include "data.h"
 
 class Stack{
-
 public:
     Stack(int);
     ~Stack();
-    /* 
-     * write all your public method prototypes here
-     * this includes you constructor and destructor
-     */
+
     bool push(int);
     bool pop();
     bool peek(Data&);
     bool isEmpty();
     int getTop();
 private:
-
-    // these are the only attributes you need. do not modify them or add any
     int size;
-    int top; // this is your top index
-    Data *stack[]; // this is your stack, it is an array of Data pointers
+    int top; // this is top index
+    Data *stack; // this is stack, it is an array of Data pointers
 };
 
 #endif //STACK_H

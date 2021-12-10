@@ -5,6 +5,8 @@
 #include "main.h"
 
 int main(){
+    int VERTEXSTART = 100;
+    const int GRAPHSIZE = 7;
     //create graph object
     Graph testGraph;
     //add vertices

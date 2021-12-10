@@ -9,7 +9,7 @@
 #include "stack.h"
 
 Stack::Stack(int setSize){
-    stack[setSize];
+    stack = new Data[setSize];
     size = setSize;
     top = -1;
 }
