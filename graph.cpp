@@ -81,7 +81,9 @@ bool Graph::isEmpty(){
 
 void Graph::printGraph(int id){ //will call traversal methods
     cout << "Breadth First Search traversal: ";
-    breadthFirstSearch(int id);
+    breadthFirstSearch(id);
+    cout << "Breadth First Search traversal: ";
+    depthFirstSearch(id);
 }
 
 bool Graph::vertexExists(int id){

@@ -33,7 +33,7 @@ private:
     // these are the only attributes you need. do not modify them or add any
     int size;
     int top; // this is your top index
-    Data *stack[int]; // this is your stack, it is an array of Data pointers
+    Data *stack[]; // this is your stack, it is an array of Data pointers
 };
 
 #endif //STACK_H

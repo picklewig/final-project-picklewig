@@ -8,7 +8,7 @@ int main(){
     //create graph object
     Graph testGraph;
     //add vertices
-    cout << "adding vertices to graph" << endl
+    cout << "adding vertices to graph" << endl;
     for(int index = 0; index < GRAPHSIZE; index++){
         if(testGraph.addVertex(VERTEXSTART)){
             cout << "adding " << VERTEXSTART << " to graph" << endl;

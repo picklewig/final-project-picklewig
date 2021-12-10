@@ -10,13 +10,14 @@
 
 Stack::Stack(int setSize){
     stack[setSize];
+    size = setSize;
     top = -1;
 }
 
 // function to insert data into stack
 bool Stack::push(int id){
     bool pushed = false;
-    if(top < setSize-1){
+    if(top < size-1){
         stack[++top] = new Data;
         stack[top]->id = id;
         pushed = true;
