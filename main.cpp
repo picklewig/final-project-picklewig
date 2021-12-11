@@ -32,9 +32,61 @@ int main(){
     //start adding edges
     cout << "adding edges to graph" << endl;
 
-    testGraph.addEdge(100, 200, 5);//origin, destination, weight
+    if(testGraph.addEdge(100, 200, 5)){//origin, destination, weight
+        cout << "adding edges to node 100" << endl;
+        testGraph.addEdge(100, 300, 5);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
 
-    testGraph.addEdge(200, 300, 10);//origin, destination, weight
+    if(testGraph.addEdge(200, 300, 10)){//origin, destination, weight
+        cout << "adding edges to node 200" << endl;
+        testGraph.addEdge(200, 400, 5);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
 
-    testGraph.addEdge(300, 400, 20);//origin, destination, weight
+    if(testGraph.addEdge(300, 400, 20)){//origin, destination, weight
+        cout << "adding edges to node 300" << endl;
+        testGraph.addEdge(300, 700, 10);
+        testGraph.addEdge(300, 500, 25);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
+
+    if(testGraph.addEdge(400, 700, 20)){//origin, destination, weight
+        cout << "adding edges to node 400" << endl;
+        testGraph.addEdge(400, 500, 5);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
+
+    if(testGraph.addEdge(500, 600, 5)){//origin, destination, weight
+        cout << "adding edges to node 500" << endl;
+        testGraph.addEdge(500, 200, 10);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
+    //duplicate edge already created by node 500
+    if(testGraph.addEdge(600, 500, 5)){//origin, destination, weight
+        cout << "adding edges to node 600" << endl;
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
+
+    if(testGraph.addEdge(700, 500, 10)){//origin, destination, weight
+        cout << "adding edges to node 700" << endl;
+        testGraph.addEdge(700, 600, 5);
+    }
+    else{
+        cout << "could not add edge to node, possibly duplicate" << endl;
+    }
+
+
 };

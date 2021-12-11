@@ -53,8 +53,10 @@ bool Graph::removeVertex(int id){
 bool Graph::addEdge(int id, int destination, int weight){
     bool added = false;
     LinkedList* vertexList = findVertexList(id);
+    LinkedList* destinationList = findVertexList(destination);
     if(vertexList and !vertexList->exists(destination)){
         vertexList->addEdge(destination, weight);
+        destinationList->addEdge(id, weight);
         added = true;
         edges++;
     }
@@ -64,7 +66,9 @@ bool Graph::addEdge(int id, int destination, int weight){
 bool Graph::removeEdge(int id, int destination, int weight){
     bool removed = false;
     LinkedList* vertexList = findVertexList(id);
+    LinkedList* destinationList = findVertexList(destination);
     if(vertexList and vertexList->deleteEdge(destination, weight)){
+        destinationList->deleteEdge(id, weight);
         removed = true;
         edges--;
     }
