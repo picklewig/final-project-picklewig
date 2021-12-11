@@ -34,10 +34,10 @@ bool LinkedList::addEdge(int id, int weight){
     }
     else if(id > 0 and weight > 0){
         Node *current = head; //head initially is NULL
-        while(weight > current->data.id and current->next != NULL){
+        while(id > current->data.id and current->next != NULL){
             current = current->next;
         }
-        if(weight < current->data.id and current->prev != NULL){ //adds new body
+        if(id < current->data.id and current->prev != NULL){ //adds new body
             Node *insertEdge = createEdge(id, weight);
             insertEdge->next = current;
             insertEdge->prev = current->prev;

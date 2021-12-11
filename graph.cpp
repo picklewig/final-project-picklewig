@@ -84,6 +84,10 @@ bool Graph::isEmpty(){
 }
 
 void Graph::printGraph(int id){ //will call traversal methods
+    cout << "Displaying Adjacency list: " << endl;
+    for(LinkedList* list : graph){
+        list->printList();
+    }
     cout << "Breadth First Search traversal: ";
     breadthFirstSearch(id);
     cout << "Depth First Search traversal: ";
@@ -141,6 +145,7 @@ void Graph::breadthFirstSearch(int id){
     }
     Stack queue(vertices);
     queue.push(id);
+    visited[0] = true;
     while(!queue.isEmpty()){
         cout << queue.getTop() << " ";
         queue.pop();
