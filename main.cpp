@@ -51,7 +51,6 @@ int main(){
     if(testGraph.addEdge(300, 400, 20)){//origin, destination, weight
         cout << "adding edges to node 300" << endl;
         testGraph.addEdge(300, 700, 10);
-        testGraph.addEdge(300, 500, 25);
     }
     else{
         cout << "could not add edge to node, possibly duplicate" << endl;
@@ -88,5 +87,5 @@ int main(){
         cout << "could not add edge to node, possibly duplicate" << endl;
     }
 
-
+    testGraph.printGraph(100);
 };

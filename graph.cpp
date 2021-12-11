@@ -86,7 +86,7 @@ bool Graph::isEmpty(){
 void Graph::printGraph(int id){ //will call traversal methods
     cout << "Breadth First Search traversal: ";
     breadthFirstSearch(id);
-    cout << "Breadth First Search traversal: ";
+    cout << "Depth First Search traversal: ";
     depthFirstSearch(id);
 }
 
@@ -147,7 +147,7 @@ void Graph::breadthFirstSearch(int id){
         for(int index = 0; index < vertices; index++){
             if(!visited[index]){
                 visited[index] = true;
-                queue.push(index);
+                queue.push(graph[index]->getHead()->data.id);
             }
         }
     }
@@ -160,8 +160,8 @@ void Graph::depthFirstSearch(int id){
         visited[index] = false;
     }
     for(int index = 0; index < vertices; index++){
-        if(!visited[index]) {
-            depthFirstSearch(index, visited);
+        if(!visited[index]){
+            depthFirstSearch(id, visited);
         }
     }
     cout << endl;
@@ -169,10 +169,10 @@ void Graph::depthFirstSearch(int id){
 
 void Graph::depthFirstSearch(int node, bool* visited){
     visited[node] = true;
-    cout << node << " ";
+    //cout << node << " ";
     for(int index = 0; index < vertices; index++){
         if(!visited[index]){
-            depthFirstSearch(index, visited);
+            depthFirstSearch(graph[index]->getHead()->data.id, visited);
         }
     }
 }

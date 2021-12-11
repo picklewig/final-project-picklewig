@@ -57,5 +57,5 @@ bool Stack::isEmpty(){
 }
 
 int Stack::getTop(){
-    return top;
+    return stack[top]->id;
 }
