@@ -30,13 +30,13 @@ class Graph{
         bool vertexExists(int);
         bool edgeExists(int, int);
         void clear();
-        void breadthFirstSearch(int);
-        void depthFirstSearch(int);
     private:
         vector<LinkedList*> graph;
         int vertices;//count variables
         int edges;
         LinkedList* findVertexList(int);
+        void breadthFirstSearch(int);
+        void depthFirstSearch(int);
         void depthFirstSearch(int, bool*);
 };
 

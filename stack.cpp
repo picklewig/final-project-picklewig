@@ -14,6 +14,8 @@ Stack::Stack(int setSize){
     top = -1;
 }
 
+Stack::~Stack(){}
+
 // function to insert data into stack
 bool Stack::push(int id){
     bool pushed = false;

@@ -155,16 +155,20 @@ void Graph::depthFirstSearch(int id){
     for(int index = 0; index < vertices; index++){
         visited[index] = false;
     }
-    depthFirstSearch(id, visited);
+    for(int index = 0; index < vertices; index++){
+        if(!visited[index]) {
+            depthFirstSearch(index, visited);
+        }
+    }
     cout << endl;
 }
 
 void Graph::depthFirstSearch(int node, bool* visited){
-    cout << node << " ";
     visited[node] = true;
+    cout << node << " ";
     for(int index = 0; index < vertices; index++){
-        if(!visited[*index]){
-            depthFirstSearch(*index, visited);
+        if(!visited[index]){
+            depthFirstSearch(index, visited);
         }
     }
 }

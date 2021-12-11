@@ -22,10 +22,19 @@ int main(){
     }
 
     cout << "testing known duplicate" << endl;
-    if(testGraph.addVertex(VERTEXSTART)){
-        cout << "adding " << VERTEXSTART << " to graph" << endl;
+    if(testGraph.addVertex(100)){
+        cout << "adding " << 100 << " to graph" << endl;
     }
     else{
-        cout << VERTEXSTART << " could not be added" << endl;
+        cout << 100 << " could not be added" << endl;
     }
+
+    //start adding edges
+    cout << "adding edges to graph" << endl;
+
+    testGraph.addEdge(100, 200, 5);//origin, destination, weight
+
+    testGraph.addEdge(200, 300, 10);//origin, destination, weight
+
+    testGraph.addEdge(300, 400, 20);//origin, destination, weight
 };
