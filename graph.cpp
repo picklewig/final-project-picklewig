@@ -1,6 +1,9 @@
-//
-// Created by Isaac on 12/6/2021.
-//
+/****************
+ * Author: Isaac Shepherd
+ * file: graph.cpp
+ * Holds class method definitions for graph class
+ * includes only graph.h
+ ****************/
 
 #include "graph.h"
 
@@ -82,7 +85,7 @@ bool Graph::isEmpty(){
 }
 
 void Graph::printGraph(int id){ //will call traversal methods
-    cout << "Displaying Adjacency list: " << endl;
+    cout << endl << "Displaying Adjacency list: " << endl;
     for(LinkedList* list : graph){
         list->printList();
     }
@@ -138,9 +141,10 @@ LinkedList *Graph::findVertexList(int id){
 }
 
 void Graph::breadthFirstSearch(int id){
-
+    //visit all neighbors, move no lowest neighbor and visit all non-visited neighbors
+    //use queue
 }
 
 void Graph::depthFirstSearch(int id){
-
+    //visit lowest neighbor by push, do the same thing for that neighbor, pop when youre out of visited neighbors
 }

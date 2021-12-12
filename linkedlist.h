@@ -1,6 +1,8 @@
 /**************
  * author: Isaac Shepherd
  * file: linkedlist.h
+ * holds class method prototypes for class linkedlist. includes data.h to use node structures as members of
+ * linked list
  **************/
 
 
@@ -8,12 +10,10 @@
 #define LINKEDLIST_H
 
 #include "data.h"
-#include "string"
 #include <iostream>
 
 using std::cout;
 using std::endl;
-using std::string;
 
 class LinkedList{
     public:

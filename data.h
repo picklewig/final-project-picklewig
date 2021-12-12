@@ -1,6 +1,9 @@
-/* 
- * File: data.h
- */
+/****************
+ * Author: Isaac Shepherd
+ * file: data.h
+ * defines structures used to hold edge and vertex data. structures used in graph method arguments
+ * and graph traversals
+ ****************/
 
 #ifndef DATA_H
 #define DATA_H

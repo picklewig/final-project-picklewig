@@ -1,6 +1,7 @@
 /**************
  * author: Isaac Shepherd
  * file: linkedlist.cpp
+ * defines methods for class linkedlist. includes only linkedlist.h
  **************/
 
 #include "linkedlist.h"

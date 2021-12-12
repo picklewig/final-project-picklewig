@@ -1,6 +1,10 @@
-//
-// Created by Isaac on 12/5/2021.
-//
+/****************
+ * Author: Isaac Shepherd
+ * file: graph.h
+ * defines class prototype for graph. includes linkedlist.h and stack.h to use their class
+ * architectures in graph. includes vector to hold implied vertices and edges
+ * includes iostream of printing
+ ****************/
 
 #ifndef L8_SHEPHERD_GRAPH_H
 #define L8_SHEPHERD_GRAPH_H
@@ -8,12 +12,10 @@
 #include "linkedlist.h"
 #include "stack.h"
 #include <iostream>
-#include "string"
 #include <vector>
 
 using std::cout;
 using std::endl;
-using std::string;
 using std::vector;
 
 class Graph{

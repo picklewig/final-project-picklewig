@@ -1,6 +1,8 @@
-//
-// Created by Isaac on 12/8/2021.
-//
+/****************
+ * Author: Isaac Shepherd
+ * file: main.cpp
+ * testbed for class graph methods and functionality
+ ****************/
 
 #include "main.h"
 
@@ -10,7 +12,7 @@ int main(){
     //create graph object
     Graph testGraph;
     //add vertices
-    cout << "adding vertices to graph" << endl;
+    cout << endl << "adding vertices to graph" << endl;
     for(int index = 0; index < GRAPHSIZE; index++){
         if(testGraph.addVertex(VERTEXSTART)){
             cout << "adding " << VERTEXSTART << " to graph" << endl;
@@ -30,8 +32,7 @@ int main(){
     }
 
     //start adding edges
-
-    cout << "adding edges to graph" << endl;
+    cout << endl << "adding edges to graph" << endl;
 
     if(testGraph.addEdge(100, 200, 5)){//origin, destination, weight
         cout << "adding edges to node 100" << endl;
@@ -72,6 +73,7 @@ int main(){
     else{
         cout << "could not add edge to node, possibly duplicate" << endl;
     }
+
     //duplicate edge already created by node 500
     if(testGraph.addEdge(600, 500, 5)){//origin, destination, weight
         cout << "adding edges to node 600" << endl;
@@ -94,4 +96,8 @@ int main(){
     }
 
     testGraph.printGraph(100);
+
+    //testing vertexExists() and edgeExists()
+    cout << endl << "Testing exist methods" << endl;
+
 };
