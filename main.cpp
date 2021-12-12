@@ -30,6 +30,7 @@ int main(){
     }
 
     //start adding edges
+
     cout << "adding edges to graph" << endl;
 
     if(testGraph.addEdge(100, 200, 5)){//origin, destination, weight
@@ -66,7 +67,7 @@ int main(){
 
     if(testGraph.addEdge(500, 600, 5)){//origin, destination, weight
         cout << "adding edges to node 500" << endl;
-        testGraph.addEdge(500, 200, 10);
+        testGraph.addEdge(500, 700, 10);
     }
     else{
         cout << "could not add edge to node, possibly duplicate" << endl;
@@ -79,9 +80,8 @@ int main(){
         cout << "could not add edge to node, possibly duplicate" << endl;
     }
 
-    if(testGraph.addEdge(700, 500, 10)){//origin, destination, weight
+    if(testGraph.addEdge(700, 600, 10)){//origin, destination, weight
         cout << "adding edges to node 700" << endl;
-        testGraph.addEdge(700, 600, 5);
     }
     else{
         cout << "could not add edge to node, possibly duplicate" << endl;

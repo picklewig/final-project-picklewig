@@ -52,18 +52,20 @@ bool Graph::addEdge(int vertexId, int destinationId, int weight){
     LinkedList* vertexList = findVertexList(vertexId);
     LinkedList* destinationList = findVertexList(destinationId);
 
-    if(vertexList and !vertexList->exists(destinationId)){
-        vertexList->addEdge(destinationId, weight);
-        destinationList->addEdge(vertexId, weight);
-        added = true;
-        edges++;
+    if(vertexList and destinationList){
+        if(!vertexList->exists(destinationId) and !destinationList->exists(vertexId)){
+            vertexList->addEdge(destinationId, weight);
+            destinationList->addEdge(vertexId, weight);
+            added = true;
+            edges++;
+        }
     }
     return added;
 }
 
-bool Graph::removeEdge(LinkedList* vertex, int destinationId){//make 1 parameter, id to be removed
+bool Graph::removeEdge(LinkedList* vertex, int destinationId){
     bool removed = false;
-    if(vertex){//possibly this
+    if(vertex){
         vertex->deleteEdge(destinationId);
         removed = true;
         edges--;
