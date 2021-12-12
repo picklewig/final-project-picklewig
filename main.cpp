@@ -88,4 +88,10 @@ int main(){
     }
 
     testGraph.printGraph(100);
+
+    if(testGraph.removeVertex(400)){
+        cout << "removed vertex: " << 400 << " from graph" << endl;
+    }
+
+    testGraph.printGraph(100);
 };

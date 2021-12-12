@@ -29,47 +29,42 @@ bool Graph::addVertex(int id){
     return added;
 }
 
-bool Graph::removeVertex(int id){
+bool Graph::removeVertex(int vertexToDeleteId){
     bool removed = false;
     int index = 0;
-    Data* copyData;
     for(LinkedList* list : graph){ //deleting vertex requires removing from vector
-        if(list->getHead()->data.id == id){
+        if(list->getHead()->data.id == vertexToDeleteId){
             graph.erase(graph.begin()+index);
             delete list;
             removed = true;
             vertices--;
         }
-        if(list->exists(id)){ //removes possible edges going to vertex to be deleted
-            list->getEdge(id, copyData);
-            if(list->deleteEdge(copyData->id, copyData->weight)){
-                edges--;
-            }
-        }
         index++;
-    }//use 2nd for loop and call removeEdge
+    }
+    for(LinkedList* list : graph){//for linkedlist in vector, delete edges to deleted vertex
+        removeEdge(list, vertexToDeleteId);
+    }
     return removed;
 }
 
-bool Graph::addEdge(int id, int destination, int weight){
+bool Graph::addEdge(int vertexId, int destinationId, int weight){
     bool added = false;
-    LinkedList* vertexList = findVertexList(id);
-    LinkedList* destinationList = findVertexList(destination);
-    if(vertexList and !vertexList->exists(destination)){
-        vertexList->addEdge(destination, weight);
-        destinationList->addEdge(id, weight);
+    LinkedList* vertexList = findVertexList(vertexId);
+    LinkedList* destinationList = findVertexList(destinationId);
+
+    if(vertexList and !vertexList->exists(destinationId)){
+        vertexList->addEdge(destinationId, weight);
+        destinationList->addEdge(vertexId, weight);
         added = true;
         edges++;
     }
     return added;
 }
 
-bool Graph::removeEdge(int id, int destination, int weight){
+bool Graph::removeEdge(LinkedList* vertex, int destinationId){//make 1 parameter, id to be removed
     bool removed = false;
-    LinkedList* vertexList = findVertexList(id);
-    LinkedList* destinationList = findVertexList(destination);
-    if(vertexList and vertexList->deleteEdge(destination)){
-        destinationList->deleteEdge(id);
+    if(vertex){//possibly this
+        vertex->deleteEdge(destinationId);
         removed = true;
         edges--;
     }
@@ -93,6 +88,7 @@ void Graph::printGraph(int id){ //will call traversal methods
     //breadthFirstSearch(id);
     cout << "Depth First Search traversal: ";
     //depthFirstSearch(id);
+    cout << endl;
 }
 
 bool Graph::vertexExists(int id){
