@@ -36,6 +36,7 @@ bool Graph::removeVertex(int id){
     for(LinkedList* list : graph){ //deleting vertex requires removing from vector
         if(list->getHead()->data.id == id){
             graph.erase(graph.begin()+index);
+            delete list;
             removed = true;
             vertices--;
         }
@@ -46,7 +47,7 @@ bool Graph::removeVertex(int id){
             }
         }
         index++;
-    }
+    }//use 2nd for loop and call removeEdge
     return removed;
 }
 
@@ -67,8 +68,8 @@ bool Graph::removeEdge(int id, int destination, int weight){
     bool removed = false;
     LinkedList* vertexList = findVertexList(id);
     LinkedList* destinationList = findVertexList(destination);
-    if(vertexList and vertexList->deleteEdge(destination, weight)){
-        destinationList->deleteEdge(id, weight);
+    if(vertexList and vertexList->deleteEdge(destination)){
+        destinationList->deleteEdge(id);
         removed = true;
         edges--;
     }
@@ -89,9 +90,9 @@ void Graph::printGraph(int id){ //will call traversal methods
         list->printList();
     }
     cout << "Breadth First Search traversal: ";
-    breadthFirstSearch(id);
+    //breadthFirstSearch(id);
     cout << "Depth First Search traversal: ";
-    depthFirstSearch(id);
+    //depthFirstSearch(id);
 }
 
 bool Graph::vertexExists(int id){
@@ -139,45 +140,9 @@ LinkedList *Graph::findVertexList(int id){
 }
 
 void Graph::breadthFirstSearch(int id){
-    bool* visited = new bool[vertices];
-    for(int index = 0; index < vertices; index++){
-        visited[index] = false;
-    }
-    Stack queue(vertices);
-    queue.push(id);
-    visited[0] = true;
-    while(!queue.isEmpty()){
-        cout << queue.getTop() << " ";
-        queue.pop();
-        for(int index = 0; index < vertices; index++){
-            if(!visited[index]){
-                visited[index] = true;
-                queue.push(graph[index]->getHead()->data.id);
-            }
-        }
-    }
-    cout << endl;
+
 }
 
 void Graph::depthFirstSearch(int id){
-    bool* visited = new bool[vertices];
-    for(int index = 0; index < vertices; index++){
-        visited[index] = false;
-    }
-    for(int index = 0; index < vertices; index++){
-        if(!visited[index]){
-            depthFirstSearch(id, visited);
-        }
-    }
-    cout << endl;
-}
 
-void Graph::depthFirstSearch(int node, bool* visited){
-    visited[node] = true;
-    //cout << node << " ";
-    for(int index = 0; index < vertices; index++){
-        if(!visited[index]){
-            depthFirstSearch(graph[index]->getHead()->data.id, visited);
-        }
-    }
 }

@@ -55,13 +55,13 @@ bool LinkedList::addEdge(int id, int weight){
     return added;
 }
 
-bool LinkedList::deleteEdge(int id, int weight){
+bool LinkedList::deleteEdge(int id){
     bool deleted = false;
     Node *current = head;
     while(current and id != current->data.id){
         current = current->next;
     }
-    if(current and id == current->data.id and weight == current->data.weight) {
+    if(current and id == current->data.id) {
         if (current->prev != NULL and current->next == NULL) { //deletes tail node
             current->prev->next = NULL;
         } else if (current->next != NULL and current->prev == NULL) { //deletes head node

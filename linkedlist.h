@@ -21,7 +21,7 @@ class LinkedList{
         ~LinkedList();
         //methods will be used inside Graph methods
         bool addEdge(int, int);
-        bool deleteEdge(int, int);
+        bool deleteEdge(int);
         bool getEdge(int, Data*);
         void printList(bool = false);
         int getCount();
