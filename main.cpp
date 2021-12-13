@@ -11,6 +11,12 @@ int main(){
     const int GRAPHSIZE = 7;
     //create graph object
     Graph testGraph;
+
+    if(testGraph.isEmpty()){
+        cout << "Graph is empty" << endl;
+    }else{
+        cout << "graph is not empty" << endl;
+    }
     //add vertices
     cout << endl << "adding vertices to graph" << endl;
     for(int index = 0; index < GRAPHSIZE; index++){
@@ -26,8 +32,7 @@ int main(){
     cout << "testing known duplicate" << endl;
     if(testGraph.addVertex(100)){
         cout << "adding " << 100 << " to graph" << endl;
-    }
-    else{
+    }else{
         cout << 100 << " could not be added" << endl;
     }
 
@@ -99,5 +104,30 @@ int main(){
 
     //testing vertexExists() and edgeExists()
     cout << endl << "Testing exist methods" << endl;
-
+    if(testGraph.vertexExists(100)){
+        cout << "vertex 100 exists" << endl;
+    } else{
+        cout << "vertex does not exist" << endl;
+    }
+    if(testGraph.vertexExists(1000)){
+        cout << "vertex 1000 exists" << endl;
+    } else{
+        cout << "vertex does not exist" << endl;
+    }
+    if(testGraph.vertexExists(400)){
+        cout << "vertex 100 exists" << endl;
+    } else{
+        cout << "vertex does not exist" << endl;
+    }
+    /*
+    if(testGraph.edgeExists(200, 400)){
+        cout << "Edge was removed" << endl;
+    } else{
+        cout << "Edge was not removed" << endl;
+    }
+    if(testGraph.edgeExists(200, 1000)){
+        cout << "Edge " << 200 << " to " << 1000 << "was removed" << endl;
+    } else{
+        cout << "Edge was not removed" << endl;
+    }*/
 };

@@ -143,8 +143,26 @@ LinkedList *Graph::findVertexList(int id){
 void Graph::breadthFirstSearch(int id){
     //visit all neighbors, move no lowest neighbor and visit all non-visited neighbors
     //use queue
+    Node* current = findVertexList(id)->getHead();
+    Stack* queue;
+    int visitedCounter = 0;
+    while(visitedCounter < vertices){
+        while (current and current->next != NULL) {
+            if (!current->data.visited) {
+                current->data.visited = true;
+                queue->push(current->data.id);
+                cout << current->data.id << " ";
+                visitedCounter++;
+            }
+            current = current->next;
+        }
+        queue->pop();
+        current = findVertexList(queue->getTop())->getHead();
+    }
+    cout << endl;
 }
 
 void Graph::depthFirstSearch(int id){
     //visit lowest neighbor by push, do the same thing for that neighbor, pop when youre out of visited neighbors
+
 }
