@@ -29,7 +29,6 @@ class Graph{
         bool isEmpty();
         void printGraph(int);
         bool vertexExists(int);
-        bool edgeExists(int, int);
         void clear();
     private:
         vector<LinkedList*> graph;
@@ -38,6 +37,7 @@ class Graph{
         LinkedList* findVertexList(int);
         void breadthFirstSearch(int);
         void depthFirstSearch(int);
+        void depthFirstSearch(int, bool*);
         bool removeEdge(LinkedList* , int);
 
 };

@@ -11,7 +11,7 @@ int main(){
     const int GRAPHSIZE = 7;
     //create graph object
     Graph testGraph;
-
+    cout << endl << "testing to see if graph is empty" << endl;
     if(testGraph.isEmpty()){
         cout << "Graph is empty" << endl;
     }else{
@@ -115,19 +115,20 @@ int main(){
         cout << "vertex does not exist" << endl;
     }
     if(testGraph.vertexExists(400)){
-        cout << "vertex 100 exists" << endl;
+        cout << "vertex 400 exists" << endl;
     } else{
         cout << "vertex does not exist" << endl;
     }
-    /*
-    if(testGraph.edgeExists(200, 400)){
-        cout << "Edge was removed" << endl;
-    } else{
-        cout << "Edge was not removed" << endl;
+    cout << "testing isEmpty() again" << endl;
+    if(testGraph.isEmpty()){
+        cout << "Graph is empty" << endl;
+    }else{
+        cout << "graph is not empty" << endl;
     }
-    if(testGraph.edgeExists(200, 1000)){
-        cout << "Edge " << 200 << " to " << 1000 << "was removed" << endl;
-    } else{
-        cout << "Edge was not removed" << endl;
-    }*/
+
+    cout << endl << "clearing graph..." << endl;
+    testGraph.clear();
+
+    testGraph.printGraph(100);
+
 };

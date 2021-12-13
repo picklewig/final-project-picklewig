@@ -44,7 +44,7 @@ bool Graph::removeVertex(int vertexToDeleteId){
         }
         index++;
     }
-    for(LinkedList* list : graph){//for linkedlist in vector, delete edges to deleted vertex
+    for(LinkedList* list : graph){//for linked list in vector, delete edges to deleted vertex
         removeEdge(list, vertexToDeleteId);
     }
     return removed;
@@ -84,16 +84,15 @@ bool Graph::isEmpty(){
     return empty;
 }
 
-void Graph::printGraph(int id){ //will call traversal methods
+void Graph::printGraph(int id){//have not figured out working DFS, took wrong approach and causes segmentation faults
     cout << endl << "Displaying Adjacency list: " << endl;
     for(LinkedList* list : graph){
         list->printList();
     }
     cout << "Breadth First Search traversal: ";
-    //breadthFirstSearch(id);
-    cout << "Depth First Search traversal: ";
+    breadthFirstSearch(id);
+    cout << "Depth First Search traversal: " << endl;
     //depthFirstSearch(id);
-    cout << endl;
 }
 
 bool Graph::vertexExists(int id){
@@ -106,26 +105,11 @@ bool Graph::vertexExists(int id){
     return exists;
 }
 
-bool Graph::edgeExists(int id, int weight){
-    bool exists = false;
-    Data* copyData;
-    for(LinkedList* list : graph){
-        if(list->getEdge(id, copyData)){
-            if(copyData->weight == weight){
-                exists = true;
-            }
-        }
-    }
-    return exists;
-}
-
 void Graph::clear(){
-    int index = 0;
     for(LinkedList* list : graph){
         delete list;
-        graph.erase(graph.begin()+index);
-        index++;
     }
+    graph.clear();
     vertices = 0;
     edges = 0;
 }
@@ -143,26 +127,50 @@ LinkedList *Graph::findVertexList(int id){
 void Graph::breadthFirstSearch(int id){
     //visit all neighbors, move no lowest neighbor and visit all non-visited neighbors
     //use queue
-    Node* current = findVertexList(id)->getHead();
-    Stack* queue;
-    int visitedCounter = 0;
-    while(visitedCounter < vertices){
-        while (current and current->next != NULL) {
-            if (!current->data.visited) {
-                current->data.visited = true;
-                queue->push(current->data.id);
-                cout << current->data.id << " ";
-                visitedCounter++;
+    bool *visited = new bool[vertices];
+    for(int index = 0; index < vertices; index++) {
+        visited[index] = false;
+    }
+    Stack queue(vertices);
+    visited[0] = true;
+    queue.push(id);
+
+    while(!queue.isEmpty())
+    {
+        id = queue.getTop();
+        cout << id << " ";
+        queue.pop();
+        for (int index = 0; index < vertices; index++){
+            if (!visited[index])
+            {
+                visited[index] = true;
+                queue.push(graph[index]->getHead()->data.id);
             }
-            current = current->next;
         }
-        queue->pop();
-        current = findVertexList(queue->getTop())->getHead();
     }
     cout << endl;
 }
 
 void Graph::depthFirstSearch(int id){
     //visit lowest neighbor by push, do the same thing for that neighbor, pop when youre out of visited neighbors
+    bool* visited = new bool[vertices];
+    for(int index = 0; index < vertices; index++){
+        visited[index] = false;
+    }
+    for(int index = 0; index < vertices; index++){
+        if(!visited[index]){
+            depthFirstSearch(id, visited);
+        }
+    }
+    cout << endl;
+}
 
+void Graph::depthFirstSearch(int node, bool* visited){
+    visited[node] = true;
+    cout << node << " ";
+    for(int index = 0; index < vertices; index++){
+        if(!visited[index]){
+            depthFirstSearch(graph[index]->getHead()->data.id, visited);
+        }
+    }
 }

@@ -14,7 +14,6 @@ using std::string;
 struct Data {
     int id; //name identifier
     int weight; //used to be string data
-    bool visited = false;
 };
 
 struct Node {
