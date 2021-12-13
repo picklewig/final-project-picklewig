@@ -26,7 +26,6 @@ class Graph{
         bool addVertex(int);//will append linked list with head node established to graph, will only require id
         bool removeVertex(int);
         bool addEdge(int, int, int);
-        bool removeEdge(LinkedList* , int);
         bool isEmpty();
         void printGraph(int);
         bool vertexExists(int);
@@ -39,6 +38,7 @@ class Graph{
         LinkedList* findVertexList(int);
         void breadthFirstSearch(int);
         void depthFirstSearch(int);
+        bool removeEdge(LinkedList* , int);
 
 };
 
